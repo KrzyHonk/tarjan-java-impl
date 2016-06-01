@@ -5,8 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.nio.file.Path;
 
-public class FileReader {
-    public InputStream getFileInputStreamFromFile(Path filepath) {
+public class FileReaderUtils {
+    public static final FileInputStream getFileInputStreamFromFile(Path filepath) {
         try {
             return new FileInputStream(filepath.toFile());
         } catch (FileNotFoundException e) {
