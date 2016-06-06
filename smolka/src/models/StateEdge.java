@@ -1,36 +1,33 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
-
 public class StateEdge implements Cloneable {
-    private StateNode outgoing;
-    private StateNode incoming;
+    private StateNode source;
+    private StateNode target;
     private String relation;
 
     public StateEdge() {
     }
 
-    public StateEdge(StateNode outgoing, StateNode incoming, String relation) {
-        this.outgoing = outgoing;
-        this.incoming = incoming;
+    public StateEdge(StateNode source, StateNode target, String relation) {
+        this.source = source;
+        this.target = target;
         this.relation = relation;
     }
 
-    public StateNode getOutgoing() {
-        return outgoing;
+    public StateNode getSource() {
+        return source;
     }
 
-    public void setOutgoing(StateNode outgoing) {
-        this.outgoing = outgoing;
+    public void setSource(StateNode source) {
+        this.source = source;
     }
 
-    public StateNode getIncoming() {
-        return incoming;
+    public StateNode getTarget() {
+        return target;
     }
 
-    public void setIncoming(StateNode incoming) {
-        this.incoming = incoming;
+    public void setTarget(StateNode target) {
+        this.target = target;
     }
 
     public String getRelation() {
@@ -47,24 +44,13 @@ public class StateEdge implements Cloneable {
         if (!(o instanceof StateEdge)) return false;
 
         StateEdge stateEdge = (StateEdge) o;
-
-        if (!getOutgoing().equals(stateEdge.getOutgoing())) return false;
-        if (!getIncoming().equals(stateEdge.getIncoming())) return false;
         return getRelation().equals(stateEdge.getRelation());
 
     }
 
     @Override
-    public int hashCode() {
-        int result = getOutgoing().hashCode();
-        result = 31 * result + getIncoming().hashCode();
-        result = 31 * result + getRelation().hashCode();
-        return result;
-    }
-
-    @Override
     protected Object clone() throws CloneNotSupportedException {
         super.clone();
-        return new StateEdge(outgoing, incoming, new String(relation));
+        return new StateEdge(source, target, new String(relation));
     }
 }

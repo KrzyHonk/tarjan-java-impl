@@ -1,7 +1,9 @@
 package models;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class StatesGraph {
     private long initStateID ;
@@ -18,6 +20,10 @@ public class StatesGraph {
     public StatesGraph(Set<StateNode> nodes, Set<StateEdge> edges) {
         this.nodes = nodes;
         this.edges = edges;
+    }
+
+    public StateNode getInitState() {
+        return nodes.stream().filter(stateNode -> stateNode.getId() == initStateID).findFirst().get();
     }
 
     public long getInitStateID() {
@@ -59,4 +65,5 @@ public class StatesGraph {
     public void setEdges(Set<StateEdge> edges) {
         this.edges = edges;
     }
+
 }

@@ -47,10 +47,20 @@ public class StateNode implements Cloneable {
         if (this.edges.size() != otherNode.getEdges().size()) {
             return false;
         }
-        /*for (int i = 0 ; i < this.edges.size(); i++) {
-            this.edges
-        }*/
-        return false;
+        boolean hasSimilarEdge = false;
+        for (StateEdge edge : this.edges) {
+            hasSimilarEdge = false;
+            for (StateEdge thatEdge : otherNode.getEdges()) {
+                if (edge.equals(thatEdge)) {
+                    hasSimilarEdge = true;
+                    break;
+                }
+            }
+            if (!hasSimilarEdge) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
