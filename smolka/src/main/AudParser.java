@@ -66,7 +66,6 @@ public class AudParser {
                         break;
                     }
                 }
-                // TODO Wiem kurwa
                 if (!nodeExists) {
                     outgoingNode = new StateNode();
                     outgoingNode.setId(outgoingID);
@@ -83,20 +82,15 @@ public class AudParser {
                         break;
                     }
                 }
-                // TODO Wiem kurwa
                 if (!nodeExists) {
                     incomingNode = new StateNode();
                     incomingNode.setId(incomingID);
                     partitioning.getNodes().add(incomingNode);
                 }
 
-                // add edge
-                // edges should be unique - don't give a damn about checking this
-                // TODO Check if edge already exists (maybe later....)
                 StateEdge edge = new StateEdge(outgoingNode, incomingNode, relation);
                 partitioning.getEdges().add(edge);
                 outgoingNode.getEdges().add(edge);
-                //incomingNode.getEdges().add(edge);
             }
         }
         return partitioning;
